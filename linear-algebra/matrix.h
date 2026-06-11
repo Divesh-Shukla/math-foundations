@@ -28,4 +28,6 @@ public:
     static double determinantOf2(const matrix &m);
 
     static double determinantOf3(const matrix &m);
+
+    matrix inverseOf2();
 };

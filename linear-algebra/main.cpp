@@ -70,5 +70,10 @@ int main()
     std::cout << "v1: ";
     v1.display();
 
+    matrix m7 = m1.inverseOf2();
+    matrix m8 = m1.multiply(m7);
+    std::cout << "m1*m1Inv: \n";
+    m8.display();
+
     return 0;
 }

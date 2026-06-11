@@ -121,3 +121,29 @@ double matrix::determinantOf3(const matrix &m)
     double result = temp + temp1 + temp2;
     return result;
 }
+
+matrix matrix::inverseOf2()
+{
+    if (grid.size() != grid[0].size())
+        throw std::invalid_argument("not a square matrix!\n");
+    double determinant;
+    if (grid.size() == 2)
+    {
+        determinant = determinantOf2(*this);
+        if (determinant == 0)
+        {
+            throw std::invalid_argument("can't find inverse, determinant is zero!\n");
+        }
+    }
+    else
+        throw std::invalid_argument("no available methods to find the inverse of the given matrix!\n");
+
+    matrix temp(*this);
+    std::swap(temp.grid[0][0], temp.grid[1][1]);
+    temp.grid[0][1] *= -1;
+    temp.grid[1][0] *= -1;
+    for (size_t i = 0; i < temp.grid.size(); i++)
+        for (size_t j = 0; j < temp.grid[0].size(); j++)
+            temp.grid[i][j] /= determinant;
+    return temp;
+}
